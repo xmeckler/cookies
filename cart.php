@@ -1,11 +1,11 @@
 <?php
 session_start();
-require 'inc/head.php';
 
 $cart = $_SESSION['cart'];
 $cookieNames = [46 => 'Pecan nuts', 36 => 'Chocolate chips', 58 => 'Chocolate cookie', 32 => 'M&M\'s&copy; cookies'];
-?>
 
+if (isset($_SESSION['loginname'])) :
+require 'inc/head.php'; ?>
 <section class="cookies container-fluid">
     <h2>Your shopping cart contains the following cookies:</h2>
     <div class="row">
@@ -23,4 +23,7 @@ $cookieNames = [46 => 'Pecan nuts', 36 => 'Chocolate chips', 58 => 'Chocolate co
         endforeach; ?>
     </div>
 </section>
-<?php require 'inc/foot.php'; ?>
+    <?php require 'inc/foot.php'; ?>
+<?php else :
+    header('Location: login.php');
+endif;?>

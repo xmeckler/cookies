@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-require 'inc/head.php';
+
 if (!isset($_SESSION['cart'])) {
 $_SESSION['cart'] = [46 => 0, 36 => 0, 58 => 0, 32 => 0];
 }
@@ -9,7 +9,8 @@ if (!empty($_GET['add_to_cart'])) {
     $_SESSION['cart'][$_GET['add_to_cart']] += 1;
 }
 
-if (isset($_SESSION['loginname'])) : ?>
+if (isset($_SESSION['loginname'])) :
+    require 'inc/head.php'; ?>
 <section class="cookies container-fluid">
   <div class="row">
     <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
